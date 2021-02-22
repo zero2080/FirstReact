@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  state = {
+    count:0,
+    level:0
+  };
+
+  add=()=>{
+    this.setState(current=>({count:current.count+1,level:current.level+1}));
+  };
+
+  minus=()=>{
+    this.setState(current=>({count:current.count-1,level:current.level-1}));
+    
+  };
+
+  render(){
+    return (
+      <div>
+        <h1>The number is : {this.state.count}</h1>
+        <h1>The level is : {this.state.level}</h1>
+        <button onClick={this.add}>Add</button>
+        {/* 괄호를 붙이면 페이지를 로딩할때 실행함.
+        괄호가 없어야 클릭했을때 실행됨(this.minus()) */}
+        {/* <button onClick={this.minus()}>Minus</button> */}
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 }
-
-export default App;
+  export default App;
+  
